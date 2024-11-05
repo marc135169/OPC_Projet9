@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useState } from "react";
+import {useState} from "react";
 import PropTypes from "prop-types";
 
 import "./style.scss";
@@ -13,12 +13,14 @@ const Select = ({
   label,
   type = "normal",
 }) => {
-  const [value, setValue] = useState();
-  const [collapsed, setCollapsed] = useState(true);
+  const [value, setValue] = useState(null);
+  const [collapsed, setCollapsed] = useState(true); 
+  
+  
   const changeValue = (newValue) => {
-    onChange();
+    onChange(newValue);
     setValue(newValue);
-    setCollapsed(newValue);
+    setCollapsed(true);    
   };
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
