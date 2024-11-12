@@ -6,12 +6,18 @@
   height: 336px;
   cursor: pointer;
   &--small {
-    width: 274px;
+    width: 363px;
     height: 190px;
     .EventCard__imageContainer {
+      width: 100%;
       height: 126px;
       min-height: auto;
-      overflow: hidden;
+      overflow: hidden;      
+      img{       
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
     }
     .EventCard__descriptionContainer {
       padding: 0;
@@ -26,6 +32,8 @@
       font-size: 8px;
       width: 75px;
       height: 21px;
+      position: absolute;
+      right: 0;
     }
   }
   background: #ffffff;
