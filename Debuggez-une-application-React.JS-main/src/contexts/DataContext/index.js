@@ -17,25 +17,38 @@ export const api = {
 };
 
 export const DataProvider = ({ children }) => {
+  
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
+  const [last, setLast] = useState(null);
+  
   const getData = useCallback(async () => {
     try {
-      setData(await api.loadData());
+      const result = await api.loadData();
+      setData(result);
+      
+      if (result?.events?.length > 0) {
+        const sortedEvents = result.events.sort(
+            (a, b) => new Date(b.date) - new Date(a.date)
+        );
+        setLast(sortedEvents[0]);
+      }
     } catch (err) {
       setError(err);
     }
   }, []);
+  
   useEffect(() => {
     if (data) return;
     getData();
-  });
+  }, [data, getData]);
   
   return (
     <DataContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         data,
+        last, 
         error,
       }}
     >

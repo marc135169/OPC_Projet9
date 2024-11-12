@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useState} from "react";
 import PropTypes from "prop-types";
 import Field, { FIELD_TYPES } from "../../components/Field";
 import Select from "../../components/Select";
@@ -16,10 +16,10 @@ const Form = ({ onSuccess, onError }) => {
   const [sending, setSending] = useState(false);  
   
   // UseEffect for test all states setters of the form
-  useEffect(() => {
-    // eslint-disable-next-line no-console
+  // eslint-disable-next-line no-console
+  /* useEffect(() => {    
     console.log(`nom:${nom}, prenom:${prenom}, email:${email}, message:${message}`);
-  }, [nom, prenom, message, email]);
+  }, [nom, prenom, message, email]); */
   
   const sendContact = useCallback(
     async (evt) => {
