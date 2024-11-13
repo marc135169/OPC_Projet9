@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Home from "./index";
 
+
 describe("When Form is created", () => {
   test("a list of fields card is displayed", async () => {
     render(<Home />);
@@ -27,18 +28,31 @@ describe("When Form is created", () => {
 
 });
 
-
 describe("When a page is created", () => {
   it("a list of events is displayed", () => {
+    render(<Home />);
+    screen.debug();
+    const eventsCards = screen.getByTestId("events-testid");    
+    expect(eventsCards).toBeInTheDocument();
+  });
+  
+  it("a list a people is displayed", async() => {
     // to implement
-  })
-  it("a list a people is displayed", () => {
-    // to implement
+    render(<Home />);
+    const peopleCards = await screen.findAllByTestId("card-people-testid");
+    expect(peopleCards.length).toEqual(6);
   })
   it("a footer is displayed", () => {
     // to implement
+    render(<Home />);    
+    expect(screen.getByText("Contactez-nous")).toBeInTheDocument();
+    expect(screen.getByText("45 avenue de la République, 75000 Paris")).toBeInTheDocument();
+    expect(screen.getByText("01 23 45 67 89")).toBeInTheDocument();
+    expect(screen.getByText("contact@724events.com")).toBeInTheDocument();    
   })
   it("an event card, with the last event, is displayed", () => {
     // to implement
+    render(<Home />);
+    expect(screen.getByTestId("last-event")).toBeInTheDocument();
   })
 });

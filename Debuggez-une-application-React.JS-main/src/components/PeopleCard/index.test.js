@@ -8,7 +8,7 @@ describe("When a people card is created", () => {
       name="test name"
       position="test position" />
     );
-    const imageElement = screen.getByTestId("card-image-testid");
+    const imageElement = screen.getByTestId("card-people-testid");
     expect(imageElement).toBeInTheDocument();
     expect(imageElement.alt).toEqual("image-alt-text");
   });
