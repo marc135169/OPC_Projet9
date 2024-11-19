@@ -70,25 +70,29 @@ const Form = ({ onSuccess, onError }) => {
                 label="Nom"                
                 value={nom}
                 onChange={(e) => setNom(e.target.value)}
+                required
             />
             <Field
                 placeholder=""
                 label="Prénom"                
                 value={prenom}
                 onChange={(e) => setPrenom(e.target.value)}
+                required
             />
             <Select
-                selection={["Personel", "Entreprise"]}
+                selection={["Personnel", "Entreprise"]}
                 onChange={() => null}
-                label="Personel / Entreprise"
+                label="Personnel / Entreprise"
                 type="large"
                 titleEmpty
+                required
             />
             <Field
                 placeholder=""
                 label="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
             />
             <Button type={BUTTON_TYPES.SUBMIT} disabled={sending}>
               {sending ? "En cours" : "Envoyer"}
@@ -101,6 +105,7 @@ const Form = ({ onSuccess, onError }) => {
                 type={FIELD_TYPES.TEXTAREA}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                required
             />
           </div>
         </div>
