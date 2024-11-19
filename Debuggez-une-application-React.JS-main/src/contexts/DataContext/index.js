@@ -15,7 +15,14 @@ export const api = {
     return json.json();
   },
 };
-
+/**
+ * 
+ * @param children
+ * @return {JSX.Element}
+ * @constructor
+ * @description DataProvider is a React Context Provider that provides data to its children.
+ * It uses the api object to fetch data from the server and set it in the context.
+ */
 export const DataProvider = ({ children }) => {
   
   const [error, setError] = useState(null);

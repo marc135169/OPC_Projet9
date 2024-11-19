@@ -29,10 +29,13 @@ describe("When Form is created", () => {
 });
 
 describe("When a page is created", () => {
-  it("a list of events is displayed", () => {
-    render(<Home />);
-    screen.debug();
-    const eventsCards = screen.getByTestId("events-testid");    
+  it("a list of events is displayed", async() => {
+    const {container} = render(<Home />);
+    
+    const debugTab = await [...container.querySelectorAll(".EventCard")];
+    screen.debug(debugTab);    
+    const eventsCards = await screen.getByTestId("events-testid"); 
+    
     expect(eventsCards).toBeInTheDocument();
   });
   

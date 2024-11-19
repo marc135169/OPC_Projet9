@@ -20,7 +20,31 @@ const Form = ({ onSuccess, onError }) => {
   /* useEffect(() => {    
     console.log(`nom:${nom}, prenom:${prenom}, email:${email}, message:${message}`);
   }, [nom, prenom, message, email]); */
-  
+    
+    /**
+     * Handles the submission of the contact form.
+     *
+     * This function prevents the default form submission behavior, sets the `sending` state to `true`,
+     * simulates an API call using `mockContactApi`, and manages success and error callbacks.
+     *
+     * @function sendContact
+     * @async
+     * @param {Event} evt - The event object from the form submission.
+     * @returns {Promise<void>} - Resolves once the form submission process is complete.
+     *
+     * @throws {Error} If the simulated API call fails, the error is caught and passed to `onError`.
+     *
+     * @example
+     * <form onSubmit={sendContact}>
+     *   <button type="submit">Send</button>
+     * </form>
+     *
+     * @dependencies
+     * - `mockContactApi`: Simulates an asynchronous API call with a delay.
+     * - React `useState` for managing form state.
+     *
+     * @see mockContactApi
+     */
   const sendContact = useCallback(
     async (evt) => {
       evt.preventDefault();

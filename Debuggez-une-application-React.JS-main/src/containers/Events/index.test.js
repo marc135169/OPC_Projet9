@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { api, DataProvider } from "../../contexts/DataContext";
-import Events from "./index";
+
+import EventList from ".";
 
 const data = {
   events: [
@@ -42,28 +43,31 @@ describe("When Events is created", () => {
     api.loadData = jest.fn().mockReturnValue(data);
     render(
       <DataProvider>
-        <Events />
+        <EventList />
       </DataProvider>
     );
-    await screen.findByText("avril");
+    const date =  await screen.findAllByText("avril");
+    expect(date.length).toBeGreaterThanOrEqual(1);
   });
-  describe("and an error occured", () => {
+  describe("and an error occurred", () => {
     it("an error message is displayed", async () => {
-      api.loadData = jest.fn().mockRejectedValue();
+      api.loadData = jest.fn().mockRejectedValue(new Error("Network error"));
+
       render(
-        <DataProvider>
-          <Events />
-        </DataProvider>
+          <DataProvider>
+            <EventList />
+          </DataProvider>
       );
-      expect(await screen.findByText("An error occured")).toBeInTheDocument();
+
+      expect(await screen.findByText("An error occurred")).toBeInTheDocument();
     });
   });
   describe("and we select a category", () => {
-    it.only("an filtered list is displayed", async () => {
+    it("an filtered list is displayed", async () => {
       api.loadData = jest.fn().mockReturnValue(data);
       render(
         <DataProvider>
-          <Events />
+          <EventList/>
         </DataProvider>
       );
       await screen.findByText("Forum #productCON");
@@ -92,7 +96,7 @@ describe("When Events is created", () => {
       api.loadData = jest.fn().mockReturnValue(data);
       render(
         <DataProvider>
-          <Events />
+          <EventList />
         </DataProvider>
       );
 

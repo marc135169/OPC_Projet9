@@ -1,3 +1,8 @@
+/**
+ * @param date
+ * @return {string}
+ * @description getMonth returns the month of the given date as a string.
+ */
 export const MONTHS = {
   1: "janvier",
   2: "février",
