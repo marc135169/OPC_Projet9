@@ -29,14 +29,12 @@ describe("When Form is created", () => {
 });
 
 describe("When a page is created", () => {
-  it("a list of events is displayed", async() => {
-    const {container} = render(<Home />);
-    
-    const debugTab = await [...container.querySelectorAll(".EventCard")];
-    screen.debug(debugTab);    
+  it("a list of events is displayed", async() => {    
+    render(<Home />);
     const eventsCards = await screen.getByTestId("events-testid"); 
+    screen.debug(eventsCards);
+    expect(eventsCards).toBeInTheDocument(); 
     
-    expect(eventsCards).toBeInTheDocument();
   });
   
   it("a list a people is displayed", async() => {
@@ -48,6 +46,7 @@ describe("When a page is created", () => {
   it("a footer is displayed", () => {
     // to implement
     render(<Home />);    
+    expect(screen.getByTestId("footer-testid")).toContainElement(screen.getByText("Notre derniére prestation"));    
     expect(screen.getByText("Contactez-nous")).toBeInTheDocument();
     expect(screen.getByText("45 avenue de la République, 75000 Paris")).toBeInTheDocument();
     expect(screen.getByText("01 23 45 67 89")).toBeInTheDocument();
