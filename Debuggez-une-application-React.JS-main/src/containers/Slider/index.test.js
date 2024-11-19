@@ -23,7 +23,7 @@ const data = {
       date: "2022-01-29T20:28:45.744Z",
       cover: "/images/evangeline-shaw-nwLTVwb7DbU-unsplash1.png",
     },
-  ],
+  ], 
 };
 
 describe("When slider is created", () => {
