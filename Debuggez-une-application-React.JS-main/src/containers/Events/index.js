@@ -9,6 +9,12 @@ import "./style.css";
 
 const PER_PAGE = 9;
 
+/**
+ * This component displays a list of events
+ * @return {JSX.Element}
+ * @constructor
+ * @description This component displays a list of events and a pagination system to navigate through them
+ */
 const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState();
